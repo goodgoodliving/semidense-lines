@@ -2092,6 +2092,7 @@ namespace L3DPP
         A_.clear();
 
         //process clusters
+        //fixme
         std::map<int,std::list<L3DPP::Segment2D> > cluster2segments;
         std::map<int,std::map<unsigned int,bool> > cluster2cameras;
         std::vector<int> unique_clusters;

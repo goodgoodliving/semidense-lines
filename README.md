@@ -1,3 +1,5 @@
+some problem 
++ double free or corruption (out)
 # Incremental 3D Line Segment Extraction for Surface Reconstruction from Semi-dense SLAM 
 
 This repo presents the code for my [Master's thesis](http://webdocs.cs.ualberta.ca/~vis/thesis_shida/). Some of the work is also presented in the following paper (accepted at ICPR 2018):

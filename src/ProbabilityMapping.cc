@@ -191,7 +191,6 @@ void ProbabilityMapping::SaveSemiDensePoints()
     std::cout << "saved semi dense point cloud" << std::endl;
 }
 
-//fixme mbResetRequested初始化
 ProbabilityMapping::ProbabilityMapping(ORB_SLAM2::Map* pMap):mbResetRequested(false)
 {
 

@@ -165,3 +165,7 @@ target_link_libraries(stereo_robot ${PROJECT_NAME})
 add_executable(stereo_euroc
         Examples/Stereo/stereo_euroc.cc)
 target_link_libraries(stereo_euroc ${PROJECT_NAME})
+
+add_executable(mono_robot
+        Examples/Monocular/mono_robot.cc)
+target_link_libraries(mono_robot ${PROJECT_NAME})
