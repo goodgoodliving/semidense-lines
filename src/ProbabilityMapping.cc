@@ -191,9 +191,10 @@ void ProbabilityMapping::SaveSemiDensePoints()
     std::cout << "saved semi dense point cloud" << std::endl;
 }
 
-
-ProbabilityMapping::ProbabilityMapping(ORB_SLAM2::Map* pMap)
+//fixme mbResetRequested初始化
+ProbabilityMapping::ProbabilityMapping(ORB_SLAM2::Map* pMap):mbResetRequested(false)
 {
+
     mpMap = pMap;
     mbFinishRequested = false; //init
     mbFinished = false;
@@ -214,7 +215,8 @@ void ProbabilityMapping::Run()
 
     while(1)
     {
-        if(CheckFinish()) break;
+        if(CheckFinish())
+            break;
         {
 #ifdef ForceRealTime
             unique_lock<mutex> lock(mMutexSemiDense);
@@ -233,13 +235,11 @@ void ProbabilityMapping::Run()
             }
 #endif
         }
-
 		//handle reset
 		ResetIfRequested();
 
         usleep(5000);
     }
-
     std::vector<ORB_SLAM2::KeyFrame*> vpKFs = mpMap->GetAllKeyFrames();
 
 

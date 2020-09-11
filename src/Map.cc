@@ -25,7 +25,7 @@
 namespace ORB_SLAM2
 {
 
-Map::Map():mnMaxKFid(0)
+Map::Map():mnMaxKFid(0),mpModel(NULL)
 {
 }
 
@@ -140,6 +140,7 @@ void Map::UpdateModel(Model* pModel)
         pModelPrev = mpModel;
         mpModel = pModel;
     }
+
     if(pModelPrev != NULL)
         pModelPrev->Release();
 }

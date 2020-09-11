@@ -271,47 +271,47 @@ ELSE(NOT WIN32)
 ENDIF(NOT WIN32)
 target_link_libraries(line3Dpp ${ALL_LIBRARIES})
 
-option(APP_LINE_3D++_BUILD_EXECUTABLES "Line3D++: build executables" ON)
+option(APP_LINE_3D++_BUILD_EXECUTABLES "Line3D++: build executables" OFF)
 
-IF(APP_LINE_3D++_BUILD_EXECUTABLES)
+#IF(APP_LINE_3D++_BUILD_EXECUTABLES)
+#
+#IF( WIN32 )
+#  # prevents multiple definition problems in windows via MinGW
+#  SET(CMAKE_EXE_LINKER_FLAGS "-static")
+#ENDIF( WIN32 )
+#
+##----- Add main for VisualSfM --------
+#add_executable(runLine3Dpp_vsfm main_vsfm.cpp)
+#target_link_libraries(runLine3Dpp_vsfm line3Dpp)
+#target_link_libraries(runLine3Dpp_vsfm ${ALL_LIBRARIES})
+#
+##----- Add main for bundler --------
+#add_executable(runLine3Dpp_bundler main_bundler.cpp)
+#target_link_libraries(runLine3Dpp_bundler line3Dpp)
+#target_link_libraries(runLine3Dpp_bundler ${ALL_LIBRARIES})
+#
+##----- Add main for mavmap --------
+#add_executable(runLine3Dpp_mavmap main_mavmap.cpp)
+#target_link_libraries(runLine3Dpp_mavmap line3Dpp)
+#target_link_libraries(runLine3Dpp_mavmap ${ALL_LIBRARIES})
+#
+##----- Add main for Pix4D --------
+#add_executable(runLine3Dpp_pix4d main_pix4d.cpp)
+#target_link_libraries(runLine3Dpp_pix4d line3Dpp)
+#target_link_libraries(runLine3Dpp_pix4d ${ALL_LIBRARIES})
+#
+##----- Add main for colmap --------
+#add_executable(runLine3Dpp_colmap main_colmap.cpp)
+#target_link_libraries(runLine3Dpp_colmap line3Dpp)
+#target_link_libraries(runLine3Dpp_colmap ${ALL_LIBRARIES})
+#
+##----- Add main for OpenMVG --------
+#IF(RapidJSON_FOUND)
+#add_executable(runLine3Dpp_openmvg main_openmvg.cpp)
+#target_link_libraries(runLine3Dpp_openmvg line3Dpp)
+#target_link_libraries(runLine3Dpp_openmvg ${ALL_LIBRARIES})
+#ENDIF(RapidJSON_FOUND)
 
-IF( WIN32 )
-  # prevents multiple definition problems in windows via MinGW
-  SET(CMAKE_EXE_LINKER_FLAGS "-static")
-ENDIF( WIN32 )
-
-#----- Add main for VisualSfM --------
-add_executable(runLine3Dpp_vsfm main_vsfm.cpp)
-target_link_libraries(runLine3Dpp_vsfm line3Dpp)
-target_link_libraries(runLine3Dpp_vsfm ${ALL_LIBRARIES})
-
-#----- Add main for bundler --------
-add_executable(runLine3Dpp_bundler main_bundler.cpp)
-target_link_libraries(runLine3Dpp_bundler line3Dpp)
-target_link_libraries(runLine3Dpp_bundler ${ALL_LIBRARIES})
-
-#----- Add main for mavmap --------
-add_executable(runLine3Dpp_mavmap main_mavmap.cpp)
-target_link_libraries(runLine3Dpp_mavmap line3Dpp)
-target_link_libraries(runLine3Dpp_mavmap ${ALL_LIBRARIES})
-
-#----- Add main for Pix4D --------
-add_executable(runLine3Dpp_pix4d main_pix4d.cpp)
-target_link_libraries(runLine3Dpp_pix4d line3Dpp)
-target_link_libraries(runLine3Dpp_pix4d ${ALL_LIBRARIES})
-
-#----- Add main for colmap --------
-add_executable(runLine3Dpp_colmap main_colmap.cpp)
-target_link_libraries(runLine3Dpp_colmap line3Dpp)
-target_link_libraries(runLine3Dpp_colmap ${ALL_LIBRARIES})
-
-#----- Add main for OpenMVG --------
-IF(RapidJSON_FOUND)
-add_executable(runLine3Dpp_openmvg main_openmvg.cpp)
-target_link_libraries(runLine3Dpp_openmvg line3Dpp)
-target_link_libraries(runLine3Dpp_openmvg ${ALL_LIBRARIES})
-ENDIF(RapidJSON_FOUND)
-
-ENDIF(APP_LINE_3D++_BUILD_EXECUTABLES)
+#ENDIF(APP_LINE_3D++_BUILD_EXECUTABLES)
 
 

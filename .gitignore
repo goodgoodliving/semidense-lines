@@ -60,3 +60,5 @@ tools/bin_vocabulary
 
 # VScode
 */.vscode/
+
+tools/*

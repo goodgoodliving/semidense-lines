@@ -23,6 +23,11 @@ vector<dlovi::Matrix> & Model::GetPoints()
 
 list<dlovi::Matrix> & Model::GetTris()
 {
+    //if(!mData.first.empty())
+    cout<<"empty "<<endl;
+        cout<<"empty "<<mData.first.empty()<<endl;
+    cout<<"first "<<mData.first.size()<<endl;
+    cout<<"second "<<mData.second.size()<<endl;
     return mData.second;
 }
 
@@ -117,11 +122,8 @@ void Modeler::RunOnce()
 
 void Modeler::UpdateModel()
 {
-    std::cout << "updating model" << std::endl; 
-
     std::pair<std::vector<dlovi::Matrix>, std::list<dlovi::Matrix> > objModel = mAlgInterface.getCurrentModel();
     Model* pNewModel = new Model(objModel.first, objModel.second);
-
     mpMap->UpdateModel(pNewModel);
 }
 
