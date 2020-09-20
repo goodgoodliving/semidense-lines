@@ -202,7 +202,31 @@ cv::Mat Tracking::GrabImageStereo(const cv::Mat &imRectLeft, const cv::Mat &imRe
         }
     }
 
-    mCurrentFrame = Frame(mImGray,imGrayRight,timestamp,mpORBextractorLeft,mpORBextractorRight,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth);
+
+    // undistort image
+    cv::Mat gray_imu;
+    cv::undistort(mImGray,gray_imu,mK,mDistCoef);
+
+    cv::Mat rgb_imu;
+    cv::undistort(imRectLeft,rgb_imu,mK,mDistCoef);
+    if(rgb_imu.channels()==1)
+    {
+        cvtColor(rgb_imu,rgb_imu,CV_GRAY2RGB);
+    }
+    else if(rgb_imu.channels()==3)
+    {
+        if(!mbRGB)
+            cvtColor(rgb_imu,rgb_imu,CV_BGR2RGB);
+    }
+    else if(rgb_imu.channels()==4)
+    {
+        if(mbRGB)
+            cvtColor(rgb_imu,rgb_imu,CV_RGBA2RGB);
+        else
+            cvtColor(rgb_imu,rgb_imu,CV_BGRA2RGB);
+    }
+
+    mCurrentFrame = Frame(mImGray,imGrayRight,timestamp,mpORBextractorLeft,mpORBextractorRight,mpORBVocabulary,mK,mDistCoef,mbf,mThDepth,gray_imu,rgb_imu);
 
     Track();
 

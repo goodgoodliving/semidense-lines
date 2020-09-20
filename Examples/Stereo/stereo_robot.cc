@@ -223,6 +223,7 @@ string getDirEnd(string dataset_dir) {
         end.pop_back();
     return end;
 }
+const int speedUp = 5;
 void LoadImages(string &strPath, vector<string> &vstrImageLeft, vector<string> &vstrImageRight, vector<double> &vTimeStamps)
 {
     cerr << "Start LoadImages." << endl;
@@ -254,20 +255,26 @@ void LoadImages(string &strPath, vector<string> &vstrImageLeft, vector<string> &
     string strPathLeft = strPath + "left";
     string strPathRight = strPath + "right";
     int img_i=0;
+    int steps = 0;
     do{
         stringstream ss;
         ss << setfill('0') << setw(6) << img_i;
         std::string file = strPathLeft + "/" + ss.str() + ".jpg";
+        steps++;
         if(exists_file(file))
         {
-            double t = img_i/10.0;
-            ss.clear();ss.str("");
-            ss << setfill('0') << setw(6) << img_i;
-            vstrImageLeft.push_back(strPathLeft + "/" + ss.str() + ".jpg");
-            ss.clear();ss.str("");
-            ss << setfill('0') << setw(6) << img_i;
-            vstrImageRight.push_back(strPathRight + "/" + ss.str() + ".jpg");
-            img_i = img_i + 1;
+            if(steps % speedUp == 0) {
+                double t = img_i / 10.0;
+                ss.clear();
+                ss.str("");
+                ss << setfill('0') << setw(6) << img_i;
+                vstrImageLeft.push_back(strPathLeft + "/" + ss.str() + ".jpg");
+                ss.clear();
+                ss.str("");
+                ss << setfill('0') << setw(6) << img_i;
+                vstrImageRight.push_back(strPathRight + "/" + ss.str() + ".jpg");
+                img_i = img_i + 1;
+            }
         }
         else
             break;

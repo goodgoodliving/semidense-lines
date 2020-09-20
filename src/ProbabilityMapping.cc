@@ -254,6 +254,8 @@ void ProbabilityMapping::Run()
 
     SaveSemiDensePoints();
 
+    mbFinished = true;
+    return;
 
     mLineDetector.RunLine3Dpp(vpKFs);
 
