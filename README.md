@@ -1,3 +1,10 @@
+# 原始的项目存在一些问题：
+1. 首先是cgal库好像使用c11有些问题，需要将主目录下的cmakelist.txt文件中的c11都改为c14
+2. 按照上一点，由于将c11替换成为了c14所以，代码中的条件编译（关于计时的部分代码）需要进行注释，只保留steaky相关的计时方法（**注意不是所有的电脑配置都需要对1、2点进行修改，主要是我在实验室的服务器上安装的过程中发现的问题，所以需要进行上述两点的修改，如果安装过程中，没有出现问题，则1、2点可以忽略**）
+3. 原始cmakelist.txt文件中的findpackage 查找eigen和opencv的时候有些问题，需要替换成自己安装的路径
+4. 按照上一点，第三方库中的findpackage eigen和opencv也需要替换（如果使用到了的话）
+5. 第三方库中g2o中的一个typedef **** 的一行代码有问题，可以参考orbslam2中其他网友提的问题，解决知道就在其中。
+6. 可能安装过程没有问题  但是后续跑起来 会报一些奇怪的段错误 所以全局搜索（ctrl+shift+F）“-march=native”  会发现有多个cmakelist.txt文件中存在这条语句，将其删除。 它就是罪魁祸首，删除后重新编译，就不会出现任何问题了。
 some problem 
 + double free or corruption (out)
 # Incremental 3D Line Segment Extraction for Surface Reconstruction from Semi-dense SLAM 
