@@ -5,6 +5,8 @@
 4. 按照上一点，第三方库中的findpackage eigen和opencv也需要替换（如果使用到了的话）
 5. 第三方库中g2o中的一个typedef **** 的一行代码有问题，可以参考orbslam2中其他网友提的问题，解决之道就在其中。
 6. 可能安装过程没有问题  但是后续跑起来 会报一些奇怪的段错误 所以全局搜索（ctrl+shift+F）“-march=native”  会发现有多个cmakelist.txt文件中存在这条语句，将其删除。 它就是罪魁祸首，删除后重新编译，就不会出现任何问题了。
+
+   
 some problem 
 + double free or corruption (out)
 # Incremental 3D Line Segment Extraction for Surface Reconstruction from Semi-dense SLAM 
